@@ -39,5 +39,9 @@ searchBtn.addEventListener('click', function () {
 });
 
 function saveSearch() {
-    
+    // saves user recent searches to page
+    // local storage
+    // display on page and have it stay there   
 }
+
+// need function when you click recent city, runs search button function
