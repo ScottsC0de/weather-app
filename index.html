@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Weather Report - Your 5 Day Weather Forecast</title>
+</head>
+
+<body>
+
+    <header><u>WEATHER REPORT</u></header>
+
+    <main>
+
+        <div id="container" class="row">
+            <section class="col-12 col-md-8 col-lg-9 col-xl-3" id="enter-city">
+                <form action="">
+                    <label for="">Enter City Here!</label><br>
+                    <input id="user-input" type="text" placeholder="City Name"><br>
+                    <button id="search-button">Search</button><br>
+                    <div id="search-history">
+                        <h2>Recent Searches:</h2>
+                    </div>
+                </form>
+            </section>
+
+            <section id="current-city" class="col-12 col-md-8 col-lg-9 col-xl-3">
+                <h2>Today:</h2>
+            </section><br>
+            <section id="five-day" class="col-12 col-md-8 col-lg-9 col-xl-3">
+                <h2>5 Day:</h2>
+            </section>
+        </div>
+
+    </main>
+
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
