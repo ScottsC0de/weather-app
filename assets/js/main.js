@@ -35,4 +35,9 @@ searchBtn.addEventListener('click', function () {
     fetch(queryURL);
     currentCity.innerHTML;
     fiveDay.innerHTML;
+    saveSearch();
 });
+
+function saveSearch() {
+    
+}
