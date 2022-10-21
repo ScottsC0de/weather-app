@@ -1,0 +1,120 @@
+/* colors when text is highlighted with cursor */
+::selection {
+    background-color: black;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Fugaz One', cursive, 'Times New Roman';
+}
+
+/* https://www.pexels.com/search/website%20background/ */
+
+body {
+    background-color: rgb(109, 105, 105);
+    background-image: url(/Users/scotty/Documents/class/Projects/weather-prac/img/pexels-pixabay-258149.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+header {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    font-family: 'Fugaz One', cursive, 'Times New Roman';
+    font-size: 100px;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    letter-spacing: 12px;
+    padding-top: 10px;
+}
+
+form {
+    text-align: center;
+    word-spacing: 5px;
+    height: 300px;
+    float: left;
+    padding: 75px 15px 75px 15px;
+}
+
+label {
+    margin: 10px;
+    text-align: center;
+    font-size: 40px;
+}
+
+input {
+    padding: 15px;
+    width: 400px;
+    text-align: center;
+    font-size: 30px;
+    border: 2px solid rgb(14, 66, 210);
+    border-radius: 55px;
+    opacity: 70%;
+}
+
+button {
+    margin-top: 10px;
+    height: 45px;
+    width: 90px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4095c6;
+}
+
+#search-history {
+    margin-top: 40px;
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    opacity: 70%;
+}
+
+#enter-city {
+    float: left;
+    height: 550px;
+    /* helps to use borders */
+    /* border: black solid 2px; */
+}
+
+#current-city {
+    position: absolute;
+    opacity: 70%;
+    top: 40%;
+    left: 38%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 260px;
+    height: 340px;
+    text-align: center;
+    background-color: white;
+}
+
+#five-day {
+    position: absolute;
+    opacity: 70%;
+    top: 40%;
+    left: 60%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 600px;
+    height: 340px;
+    text-align: center;
+    background-color: white;
+}
+
+@media screen and (max-width: 1200px) {
+    header {
+        font-size: 85px;
+    }
+
+    #current-city {
+        float: left;
+    }
+
+    #five-day {
+        float: left;
+    }
