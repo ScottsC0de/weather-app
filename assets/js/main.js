@@ -55,9 +55,9 @@ function getForecast(lat, lon) {
         // city, date, icon, temp in F, wind speed, humidity
         .then(function (response) {
             console.log(response);
-            console.log(response.city.name);
-            console.log(response.list[0].dt_txt);
-            console.log(response.list[0].weather[0].icon);
+            console.log(response.city.name); // and state?
+            console.log(response.list[0].dt_txt); // convert to normal looking time
+            console.log(response.list[0].weather[0].icon); // get icon to display
             console.log(response.list[0].main.temp); // (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
             console.log(response.list[0].wind.speed)
             console.log(response.list[0].main.humidity);
@@ -70,10 +70,10 @@ searchBtn.addEventListener('click', function (e) {
     e.preventDefault();
     var userCity = userInput.value;
     getLatLon(userCity);
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=" + myAPIKey;
-    fetch(queryURL);
-    currentCity.innerHTML;
-    fiveDay.innerHTML;
+    // var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=" + myAPIKey;
+    // fetch(queryURL);
+    // currentCity.innerHTML;
+    // fiveDay.innerHTML;
     // function, loop through 5 days, display weather for each day
     // createElement();
     // saveSearch();
