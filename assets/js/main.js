@@ -16,25 +16,27 @@ THEN I am again presented with current and future conditions for that city
 // module api link
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
+// NEEDS https://
+// weatherApiKey = "https://api.openweathermap.org/data/2.5/forecast?q=hartford&appid=43eade946f6708f970e3b3d38a9999a2";
+// console.log(fetch(weatherApiKey));
+
 // targetting html elements
 var currentCity = document.getElementById('current-city');
 var fiveDay = document.getElementById('five-day');
 var searchBtn = document.getElementById('search-button');
 var userInput = document.getElementById('user-input');
 
-// weatherApiKey = "https://api.openweathermap.org/data/2.5/forecast?q=hartford&appid=43eade946f6708f970e3b3d38a9999a2";
-// console.log(fetch(weatherApiKey));
-
 // geocoding API
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 
-
+// 2 api calls to grab data
 function getLatLon(city) {
     var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + ", us&appid=43eade946f6708f970e3b3d38a9999a2"
     fetch(queryURL)
         .then(function (response) {
             return response.json();
         })
+        // response = array of object sent
         .then(function (response) {
             console.log(response);
             console.log(response)
@@ -43,8 +45,6 @@ function getLatLon(city) {
             getForecast(cityLat, cityLon);
         })
 }
-
-// response = array of object sent
 
 function getForecast(lat, lon) {
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=43eade946f6708f970e3b3d38a9999a2"
@@ -55,33 +55,28 @@ function getForecast(lat, lon) {
         // city, date, icon, temp in F, wind speed, humidity
         .then(function (response) {
             console.log(response);
-            console.log(response.city.name)
+            console.log(response.city.name);
             console.log(response.list[0].dt_txt);
             console.log(response.list[0].weather[0].icon);
-            console.log(response.list[0].main.temp);
+            console.log(response.list[0].main.temp); // (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
             console.log(response.list[0].wind.speed)
             console.log(response.list[0].main.humidity);
+            // logging all necessary data
         })
 }
-
-// (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
 
 // button function, onclick, api is called for current city and 5 day weather
 searchBtn.addEventListener('click', function (e) {
     e.preventDefault();
     var userCity = userInput.value;
     getLatLon(userCity);
-    // user input value
-    // var myOldAPIKey = "7ca750f76d7298a802e4a755c967f18d";
-    /* var myAPIKey = "43eade946f6708f970e3b3d38a9999a2";
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=" + myAPIKey;
     fetch(queryURL);
-    // 2 api querys, api call for openweather that lat/long
     currentCity.innerHTML;
     fiveDay.innerHTML;
     // function, loop through 5 days, display weather for each day
     // createElement();
-    saveSearch(); */
+    // saveSearch();
 });
 
 function saveSearch() {
