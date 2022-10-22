@@ -39,7 +39,6 @@ function getLatLon(city) {
         // response = array of object sent
         .then(function (response) {
             console.log(response);
-            console.log(response)
             var cityLat = response[0].lat;
             var cityLon = response[0].lon;
             getForecast(cityLat, cityLon);
@@ -52,17 +51,22 @@ function getForecast(lat, lon) {
         .then(function (response) {
             return response.json();
         })
-        // city, date, icon, temp in F, wind speed, humidity
+        // displaying data for city, date, icon, temp in F, wind speed, humidity
         .then(function (response) {
-            console.log(response);
-            console.log(response.city.name); // and state?
-            console.log(response.list[0].dt_txt); // convert to normal looking time
-            console.log(response.list[0].weather[0].icon); // get icon to display
-            console.log(response.list[0].main.temp); // (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
-            console.log(response.list[0].wind.speed)
-            console.log(response.list[0].main.humidity);
             // logging all necessary data
-        })
+            var cityName = response.city.name; // and state?
+            console.log(cityName);
+            var currentTime = response.list[0].dt_txt;
+            console.log(currentTime); // convert to normal looking time
+            var cityIcon = response.list[0].weather[0].icon;
+            console.log(cityIcon); // get icon to display
+            var cityTemp = response.list[0].main.temp;
+            console.log(cityTemp); // (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
+            var windSpeed = response.list[0].wind.speed;
+            console.log(windSpeed);
+            var cityHumidity = response.list[0].main.humidity;
+            console.log(cityHumidity);
+        });
 }
 
 // button function, onclick, api is called for current city and 5 day weather
