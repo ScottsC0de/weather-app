@@ -65,17 +65,16 @@ function getForecast(lat, lon) {
             var cityName = response.city.name; // and state?
             currentCityName.textContent = cityName;
 
+            // convert to normal looking time
             // var currentDate = response.list[0].dt_txt;
             var currentDate = moment().format('dddd MMM Do, YYYY');
             todaysDateDisplay.textContent = currentDate;
-            // convert to normal looking time
 
             var cityIcon = response.list[0].weather[0].icon;
             var cityIconConvert = document.createElement('img');
             cityIconConvert.src =
-                "https://openweathermap.org/img/w/" + cityIcon + ".png";
+                "https://openweathermap.org/img/w/" + cityIcon + ".png"; // get icon to display
             currentCity.appendChild(cityIconConvert);
-            // get icon to display
 
             var cityTemp = response.list[0].main.temp;
             cityTempConvert = Math.floor((cityTemp - 273.15) * 9 / 5 + 32)// (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
