@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <title>Weather Report - Your 5 Day Weather Forecast</title>
 </head>
 
@@ -27,20 +28,18 @@
                     <button id="search-button">Search</button><br>
                     <div id="search-history">
                         <h2>Recent Searches:</h2>
-                        <button onclick="" id="recent1" class="recents"></button>
-                        <button onclick="" id="recent2" class="recents"></button>
-                        <button onclick="" id="recent3" class="recents"></button>
-                        <button onclick="" id="recent4" class="recents"></button>
-                        <button onclick="" id="recent5" class="recents"></button>
-                        <button onclick="" id="recent6" class="recents"></button>
-                        <button onclick="" id="recent7" class="recents"></button>
-                        <button onclick="" id="recent8" class="recents"></button>
                     </div>
                 </form>
             </section>
 
             <section id="current-city">
                 <h2>Today:</h2>
+                <h3 id="current-city-name"></h3>
+                <p id="todays-date"></p>
+                <p id="weather-icon"></p>
+                <p id="temp"></p>
+                <p id="humidity"></p>
+                <p id="wind-speed"></p>
             </section><br>
             <section id="five-day">
                 <h2>5 Day:</h2>
