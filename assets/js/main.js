@@ -22,20 +22,56 @@ var fiveDay = document.getElementById('five-day');
 var searchBtn = document.getElementById('search-button');
 var userInput = document.getElementById('user-input');
 
-weatherApiKey = "api.openweathermap.org/data/2.5/forecast?q=hartford&appid=43eade946f6708f970e3b3d38a9999a2";
-console.log(fetch(weatherApiKey));
+// weatherApiKey = "https://api.openweathermap.org/data/2.5/forecast?q=hartford&appid=43eade946f6708f970e3b3d38a9999a2";
+// console.log(fetch(weatherApiKey));
 
-var userCity = userInput.value;
+// geocoding API
+// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+
+
+function getLatLon(city) {
+    var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + ", us&appid=43eade946f6708f970e3b3d38a9999a2"
+    fetch(queryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            console.log(response);
+            var cityLat = response[0].lat;
+            var cityLon = response[0].lon;
+            getForecast(cityLat, cityLon);
+        })
+}
+
+// response = array of object sent
+
+function getForecast(lat, lon) {
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=43eade946f6708f970e3b3d38a9999a2"
+    fetch(queryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+}
+
 // button function, onclick, api is called for current city and 5 day weather
-searchBtn.addEventListener('click', function () {
+searchBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var userCity = userInput.value;
+    getLatLon(userCity);
     // user input value
     // var myOldAPIKey = "7ca750f76d7298a802e4a755c967f18d";
-    var myAPIKey = "43eade946f6708f970e3b3d38a9999a2";
+    /* var myAPIKey = "43eade946f6708f970e3b3d38a9999a2";
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=" + myAPIKey;
     fetch(queryURL);
+    // 2 api querys, api call for openweather that lat/long
     currentCity.innerHTML;
     fiveDay.innerHTML;
-    saveSearch();
+    // function, loop through 5 days, display weather for each day
+    // createElement();
+    saveSearch(); */
 });
 
 function saveSearch() {
