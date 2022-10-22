@@ -37,6 +37,7 @@ function getLatLon(city) {
         })
         .then(function (response) {
             console.log(response);
+            console.log(response)
             var cityLat = response[0].lat;
             var cityLon = response[0].lon;
             getForecast(cityLat, cityLon);
@@ -51,10 +52,19 @@ function getForecast(lat, lon) {
         .then(function (response) {
             return response.json();
         })
+        // city, date, icon, temp in F, wind speed, humidity
         .then(function (response) {
             console.log(response);
+            console.log(response.city.name)
+            console.log(response.list[0].dt_txt);
+            console.log(response.list[0].weather[0].icon);
+            console.log(response.list[0].main.temp);
+            console.log(response.list[0].wind.speed)
+            console.log(response.list[0].main.humidity);
         })
 }
+
+// (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
 
 // button function, onclick, api is called for current city and 5 day weather
 searchBtn.addEventListener('click', function (e) {
