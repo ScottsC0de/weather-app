@@ -65,7 +65,7 @@ button:hover {
     background-color: #4095c6;
 }
 
-#search-history {
+#recent-searches {
     margin-top: 40px;
     background-color: white;
     height: 200px;
@@ -82,7 +82,7 @@ button:hover {
 
 #current-city {
     position: absolute;
-    opacity: 70%;
+    opacity: 100%;
     top: 40%;
     left: 38%;
     margin-top: -50px;
@@ -90,7 +90,6 @@ button:hover {
     width: 260px;
     height: 340px;
     text-align: center;
-    background-color: white;
 }
 
 #five-day {

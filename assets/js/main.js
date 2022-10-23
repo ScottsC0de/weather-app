@@ -31,6 +31,7 @@ var weatherIconDisplay = document.getElementById('weather-icon');
 var cityTempDisplay = document.getElementById('temp');
 var windSpeedDisplay = document.getElementById('wind-speed');
 var currentHumidityDisplay = document.getElementById('humidity');
+var recentSearches = document.getElementById('recent-searches');
 
 // geocoding API
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -65,8 +66,8 @@ function getForecast(lat, lon) {
             var cityName = response.city.name; // and state?
             currentCityName.textContent = cityName;
 
-            // convert to normal looking time
             // var currentDate = response.list[0].dt_txt;
+            // convert to normal looking time
             var currentDate = moment().format('dddd MMM Do, YYYY');
             todaysDateDisplay.textContent = currentDate;
 
@@ -97,10 +98,13 @@ searchBtn.addEventListener('click', function (e) {
     // fiveDay.innerHTML;
     // function, loop through 5 days, display weather for each day
     // createElement();
-    // saveSearch();
+    saveSearch(userCity);
 });
 
-function saveSearch() {
+function saveSearch(city) {
+    var recentCity = document.createElement('button');
+    recentCity.textContent = city;
+    recentSearches.appendChild(recentCity);
     // saves user recent searches to page
     // local storage
     // display on page and have it stay there   
