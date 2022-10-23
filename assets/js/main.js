@@ -20,6 +20,7 @@ var cityTempDisplay = document.getElementById('temp');
 var windSpeedDisplay = document.getElementById('wind-speed');
 var currentHumidityDisplay = document.getElementById('humidity');
 var recentSearches = document.getElementById('recent-searches');
+var fiveDayForecast = document.querySelectorAll('future-forecast');
 
 // geocoding API
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -64,6 +65,7 @@ function getForecast(lat, lon) {
             cityIconConvert.src =
                 "https://openweathermap.org/img/w/" + cityIcon + ".png"; // get icon to display
             currentCity.appendChild(cityIconConvert);
+            clearOldIcon(cityIconConvert, cityIconConvert);
 
             var cityTemp = response.list[0].main.temp;
             cityTempConvert = Math.floor((cityTemp - 273.15) * 9 / 5 + 32)// (K − 273.15) × 9/5 + 32 = °F. Kelvins to Farenheit
@@ -75,9 +77,22 @@ function getForecast(lat, lon) {
             var cityHumidity = response.list[0].main.humidity;
             currentHumidityDisplay.textContent = "Humidity: " + cityHumidity + "%";
 
-            for (var i = 0; i < response.list.length; i++) {
+            fiveDayForecast.forEach(fiveDayBlock => {
+                var fiveDayName = fiveDayBlock.createElement('h3');
+                var fiveDayDate = fiveDayBlock.createElement('p');
+                var fiveDayIcon = fiveDayBlock.createElement('img');
+                var fiveDayTemp = fiveDayBlock.createElement('p');
+                var fiveDayWind = fiveDayBlock.createElement('p');
+                var fiveDayHumid = fiveDayBlock.createElement('p');
+                fiveDayName.appendChild();
+                fiveDayDate.appendChild();
+                fiveDayIcon.appendChild();
+                fiveDayTemp.appendChild();
+                fiveDayWind.appendChild();
+                fiveDayHumid.appendChild();
+                console.log(fiveDayName);
 
-            }
+            })
         });
 }
 
@@ -93,9 +108,14 @@ function saveSearch(city) {
     var recentCity = document.createElement('button');
     recentCity.textContent = city;
     recentSearches.appendChild(recentCity);
+    // clearRecents();
     // saves user recent searches to page
     // local storage
     // display on page and have it stay there   
 }
+
+function clearOldIcon(newIcon, oldIcon) {
+    weatherIconDisplay.replaceChildren(newIcon, oldIcon);
+};
 
 // need function when you click recent city, runs search button function
