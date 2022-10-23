@@ -91,20 +91,31 @@ function getForecast(lat, lon) {
              console.log(fiveDayDisplay)
              */
 
-
+            // for loop
+            // stores variables for each data item
+            // from its spot in the response array
+            // take those variables
+            // add them to text content ==
 
 
             fiveDayForecast.forEach((fiveDayBlock) => {
-                var fiveDayName = document.createElement('h3');
+                for (i = 1; i < fiveDayForecast.length; i++) {
+                    var fiveTemps = response.list[i].main.temp;
+                    var fiveWinds = response.list[i].wind.speed;
+                    var fiveHumids = response.list[i].main.humidity;
+                }
+
+                var fiveDayName = document.createElement('p');
                 var fiveDayDate = document.createElement('p');
                 var fiveDayIcon = document.createElement('img');
                 var fiveDayTemp = document.createElement('p');
                 var fiveDayWind = document.createElement('p');
                 var fiveDayHumid = document.createElement('p');
 
-                fiveDayTemp.textContent = cityTemp;
-                fiveDayWind.textContent = windSpeed;
-                fiveDayHumid.textContent = cityHumidity;
+                fiveDayName.textContent = cityName + ", " + cityState;
+                fiveDayTemp.textContent = fiveTemps;
+                fiveDayWind.textContent = fiveWinds;
+                fiveDayHumid.textContent = fiveHumids;
 
                 fiveDayBlock.appendChild(fiveDayName);
                 fiveDayBlock.appendChild(fiveDayDate);
@@ -138,5 +149,7 @@ function saveSearch(city) {
 function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
+
+// function clearOldData()
 
 // need function when you click recent city, runs search button function
