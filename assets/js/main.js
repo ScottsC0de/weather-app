@@ -20,7 +20,9 @@ var cityTempDisplay = document.getElementById('temp');
 var windSpeedDisplay = document.getElementById('wind-speed');
 var currentHumidityDisplay = document.getElementById('humidity');
 var recentSearches = document.getElementById('recent-searches');
-var fiveDayForecast = document.querySelectorAll('future-forecast');
+var fiveDayForecast = document.querySelectorAll('.future-forecast');
+
+var searchHistory = []; // push user search value into array that will be put into LS
 
 // geocoding API
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -53,7 +55,8 @@ function getForecast(lat, lon) {
             // grabbing all necessary data
 
             var cityName = response.city.name; // and state?
-            currentCityName.textContent = cityName;
+            var cityState = response.city.country; // change to state somehow
+            currentCityName.textContent = cityName + ", " + cityState;
 
             // var currentDate = response.list[0].dt_txt;
             // convert to normal looking time
@@ -77,21 +80,39 @@ function getForecast(lat, lon) {
             var cityHumidity = response.list[0].main.humidity;
             currentHumidityDisplay.textContent = "Humidity: " + cityHumidity + "%";
 
-            fiveDayForecast.forEach(fiveDayBlock => {
-                var fiveDayName = fiveDayBlock.createElement('h3');
-                var fiveDayDate = fiveDayBlock.createElement('p');
-                var fiveDayIcon = fiveDayBlock.createElement('img');
-                var fiveDayTemp = fiveDayBlock.createElement('p');
-                var fiveDayWind = fiveDayBlock.createElement('p');
-                var fiveDayHumid = fiveDayBlock.createElement('p');
-                fiveDayName.appendChild();
-                fiveDayDate.appendChild();
-                fiveDayIcon.appendChild();
-                fiveDayTemp.appendChild();
-                fiveDayWind.appendChild();
-                fiveDayHumid.appendChild();
-                console.log(fiveDayName);
+            /* for (let i = 1; i < 6; i++) {
+                 var fiveDayDisplay = {
+                     // cityIcon: response.list[arrayIndex].weather[0].icon,
+                     cityTemp: response.list[i].main.temp,
+                     windSpeed: response.list[i].wind.speed,
+                     cityHumidity: response.list[i].main.humidity
+                 };
+             } 
+             console.log(fiveDayDisplay)
+             */
 
+
+
+
+            fiveDayForecast.forEach((fiveDayBlock) => {
+                var fiveDayName = document.createElement('h3');
+                var fiveDayDate = document.createElement('p');
+                var fiveDayIcon = document.createElement('img');
+                var fiveDayTemp = document.createElement('p');
+                var fiveDayWind = document.createElement('p');
+                var fiveDayHumid = document.createElement('p');
+
+                fiveDayTemp.textContent = cityTemp;
+                fiveDayWind.textContent = windSpeed;
+                fiveDayHumid.textContent = cityHumidity;
+
+                fiveDayBlock.appendChild(fiveDayName);
+                fiveDayBlock.appendChild(fiveDayDate);
+                fiveDayBlock.appendChild(fiveDayIcon);
+                fiveDayBlock.appendChild(fiveDayTemp);
+                fiveDayBlock.appendChild(fiveDayWind);
+                fiveDayBlock.appendChild(fiveDayHumid);
+                console.log(fiveDayBlock);
             })
         });
 }
