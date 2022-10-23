@@ -105,6 +105,11 @@ button:hover {
     background-color: white;
 }
 
+.future-forecast {
+    display: inline-block;
+    margin: 25px;
+}
+
 @media screen and (max-width: 1200px) {
     header {
         font-size: 85px;
