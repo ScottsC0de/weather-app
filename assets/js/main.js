@@ -20,7 +20,7 @@ var cityTempDisplay = document.getElementById('temp');
 var windSpeedDisplay = document.getElementById('wind-speed');
 var currentHumidityDisplay = document.getElementById('humidity');
 var recentSearches = document.getElementById('recent-searches');
-var fiveDayForecast = document.querySelectorAll('.future-forecast');
+// var fiveDayForecast = document.querySelectorAll('.future-forecast');
 
 var searchHistory = []; // push user search value into array that will be put into LS
 
@@ -80,51 +80,24 @@ function getForecast(lat, lon) {
             var cityHumidity = response.list[0].main.humidity;
             currentHumidityDisplay.textContent = "Humidity: " + cityHumidity + "%";
 
-            /* for (let i = 1; i < 6; i++) {
-                 var fiveDayDisplay = {
-                     // cityIcon: response.list[arrayIndex].weather[0].icon,
-                     cityTemp: response.list[i].main.temp,
-                     windSpeed: response.list[i].wind.speed,
-                     cityHumidity: response.list[i].main.humidity
-                 };
-             } 
-             console.log(fiveDayDisplay)
-             */
 
-            // for loop
-            // stores variables for each data item
-            // from its spot in the response array
-            // take those variables
-            // add them to text content ==
+            // for loop to get 5 day
+            for (i = 1; i < 6; i++) {
 
-
-            fiveDayForecast.forEach((fiveDayBlock) => {
-                for (i = 1; i < fiveDayForecast.length; i++) {
-                    var fiveTemps = response.list[i].main.temp;
-                    var fiveWinds = response.list[i].wind.speed;
-                    var fiveHumids = response.list[i].main.humidity;
-                }
-
-                var fiveDayName = document.createElement('p');
-                var fiveDayDate = document.createElement('p');
-                var fiveDayIcon = document.createElement('img');
                 var fiveDayTemp = document.createElement('p');
-                var fiveDayWind = document.createElement('p');
+                fiveDayTemp.textContent = "Temp: " + response.list[i].main.temp + " °F";
+                fiveDay.appendChild(fiveDayTemp);
+
                 var fiveDayHumid = document.createElement('p');
+                fiveDayHumid.textContent = "Humidity: " + response.list[i].main.humidity + "%";
+                fiveDay.appendChild(fiveDayHumid);
 
-                fiveDayName.textContent = cityName + ", " + cityState;
-                fiveDayTemp.textContent = fiveTemps;
-                fiveDayWind.textContent = fiveWinds;
-                fiveDayHumid.textContent = fiveHumids;
+                var fiveDayWind = document.createElement('p');
+                fiveDayWind.textContent = "Wind Speed: " + response.list[i].wind.speed + "mph";
+                fiveDay.appendChild(fiveDayWind);
+            }
 
-                fiveDayBlock.appendChild(fiveDayName);
-                fiveDayBlock.appendChild(fiveDayDate);
-                fiveDayBlock.appendChild(fiveDayIcon);
-                fiveDayBlock.appendChild(fiveDayTemp);
-                fiveDayBlock.appendChild(fiveDayWind);
-                fiveDayBlock.appendChild(fiveDayHumid);
-                console.log(fiveDayBlock);
-            })
+
         });
 }
 
