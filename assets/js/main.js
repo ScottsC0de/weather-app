@@ -84,11 +84,16 @@ function getForecast(lat, lon) {
             // for loop to get 5 day
             for (i = 0; i < 6; i++) {
 
+                // weather data was every 3 hours, need to convert to 5 day
                 indexConvert = i * 8 + 4;
 
                 var fiveDayDate = document.createElement("p")
                 fiveDayDate.textContent = moment(response.list[indexConvert].dt_txt).format('dddd MMM Do, YYYY');
                 fiveDay.appendChild(fiveDayDate);
+
+                var fiveDayIcon = document.createElement("img");
+                fiveDayIcon.setAttribute("src", "https://openweathermap.org/img/w/" + response.list[indexConvert].weather[0].icon + ".png");
+                fiveDay.appendChild(fiveDayIcon);
 
                 var fiveDayTemp = document.createElement('p');
                 fiveDayTemp.classList.add("future-forecast");
