@@ -84,32 +84,34 @@ function getForecast(lat, lon) {
             // for loop to get 5 day
             for (i = 0; i < 6; i++) {
 
+                var dayContainers = document.createElement('div');
+                dayContainers.classList.add("future-forecast");
+
                 // weather data was every 3 hours, need to convert to 5 day
                 indexConvert = i * 8 + 4;
 
                 var fiveDayDate = document.createElement("p")
                 fiveDayDate.textContent = moment(response.list[indexConvert].dt_txt).format('dddd MMM Do, YYYY');
-                fiveDay.appendChild(fiveDayDate);
+                dayContainers.appendChild(fiveDayDate);
 
                 var fiveDayIcon = document.createElement("img");
                 fiveDayIcon.setAttribute("src", "https://openweathermap.org/img/w/" + response.list[indexConvert].weather[0].icon + ".png");
-                fiveDay.appendChild(fiveDayIcon);
+                dayContainers.appendChild(fiveDayIcon);
 
                 var fiveDayTemp = document.createElement('p');
-                fiveDayTemp.classList.add("future-forecast");
                 fiveDayTempConvert = Math.floor((response.list[indexConvert].main.temp - 273.15) * 9 / 5 + 32)
                 fiveDayTemp.textContent = "Temp: " + fiveDayTempConvert + " °F";
-                fiveDay.appendChild(fiveDayTemp);
+                dayContainers.appendChild(fiveDayTemp);
 
                 var fiveDayHumid = document.createElement('p');
-                fiveDayHumid.classList.add("future-forecast");
                 fiveDayHumid.textContent = "Humidity: " + response.list[indexConvert].main.humidity + "%";
-                fiveDay.appendChild(fiveDayHumid);
+                dayContainers.appendChild(fiveDayHumid);
 
                 var fiveDayWind = document.createElement('p');
-                fiveDayWind.classList.add("future-forecast");
                 fiveDayWind.textContent = "Wind Speed: " + response.list[indexConvert].wind.speed + "mph";
-                fiveDay.appendChild(fiveDayWind);
+                dayContainers.appendChild(fiveDayWind);
+
+                fiveDay.appendChild(dayContainers);
             }
 
 

@@ -34,7 +34,6 @@ form {
     text-align: center;
     word-spacing: 5px;
     height: 300px;
-    float: left;
     padding: 75px 15px 75px 15px;
 }
 
@@ -73,32 +72,18 @@ button:hover {
 }
 
 #enter-city {
-    float: left;
-    height: 550px;
     /* helps to use borders */
     /* border: black solid 2px; */
 }
 
 #current-city {
-    position: absolute;
     opacity: 100%;
-    top: 40%;
-    left: 38%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 260px;
     height: 340px;
     text-align: center;
 }
 
 #five-day {
-    position: absolute;
     opacity: 100%;
-    top: 30%;
-    left: 60%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 600px;
     height: 340px;
     text-align: center;
 }
@@ -106,6 +91,7 @@ button:hover {
 .future-forecast {
     display: inline-block;
     margin: 25px;
+    background-color: #4095c6;
 }
 
 @media screen and (max-width: 1200px) {
