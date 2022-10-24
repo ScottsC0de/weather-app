@@ -82,18 +82,28 @@ function getForecast(lat, lon) {
 
 
             // for loop to get 5 day
-            for (i = 1; i < 6; i++) {
+            for (i = 0; i < 6; i++) {
+
+                indexConvert = i * 8 + 4;
+
+                var fiveDayDate = document.createElement("p")
+                fiveDayDate.textContent = moment(response.list[indexConvert].dt_txt).format('dddd MMM Do, YYYY');
+                fiveDay.appendChild(fiveDayDate);
 
                 var fiveDayTemp = document.createElement('p');
-                fiveDayTemp.textContent = "Temp: " + response.list[i].main.temp + " °F";
+                fiveDayTemp.classList.add("future-forecast");
+                fiveDayTempConvert = Math.floor((response.list[indexConvert].main.temp - 273.15) * 9 / 5 + 32)
+                fiveDayTemp.textContent = "Temp: " + fiveDayTempConvert + " °F";
                 fiveDay.appendChild(fiveDayTemp);
 
                 var fiveDayHumid = document.createElement('p');
-                fiveDayHumid.textContent = "Humidity: " + response.list[i].main.humidity + "%";
+                fiveDayHumid.classList.add("future-forecast");
+                fiveDayHumid.textContent = "Humidity: " + response.list[indexConvert].main.humidity + "%";
                 fiveDay.appendChild(fiveDayHumid);
 
                 var fiveDayWind = document.createElement('p');
-                fiveDayWind.textContent = "Wind Speed: " + response.list[i].wind.speed + "mph";
+                fiveDayWind.classList.add("future-forecast");
+                fiveDayWind.textContent = "Wind Speed: " + response.list[indexConvert].wind.speed + "mph";
                 fiveDay.appendChild(fiveDayWind);
             }
 
