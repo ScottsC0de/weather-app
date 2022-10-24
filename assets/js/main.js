@@ -79,6 +79,8 @@ function getForecast(lat, lon) {
             var cityHumidity = response.list[0].main.humidity;
             currentHumidityDisplay.textContent = "Humidity: " + cityHumidity + "%";
 
+            fiveDay.textContent = "";
+
 
             // for loop to get 5 day
             for (i = 0; i < 6; i++) {
