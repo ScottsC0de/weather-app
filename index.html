@@ -21,7 +21,7 @@
 
     <main>
 
-        <div id="container" class="row">
+        <div id="container" class="row container-fluid">
             <section id="enter-city" class="col">
                 <form action="">
                     <label for="">Enter City Here!</label><br>
@@ -33,18 +33,20 @@
                 </form>
             </section>
 
-            <section id="current-city" class="col">
-                <h2>Today:</h2>
-                <h3 id="current-city-name"></h3>
-                <p id="todays-date"></p>
-                <p id="weather-icon"></p>
-                <p id="temp"></p>
-                <p id="humidity"></p>
-                <p id="wind-speed"></p>
-            </section><br>
-            <section id="five-day" class="col">
-                <h2>5 Day:</h2>
-            </section>
+            <div class="col">
+                <section id="current-city" class="text-center">
+                    <h2><u>Today:</u></h2>
+                    <h3 id="current-city-name"></h3>
+                    <p id="todays-date"></p>
+                    <p id="weather-icon"></p>
+                    <p id="temp"></p>
+                    <p id="humidity"></p>
+                    <p id="wind-speed"></p>
+                </section>
+                <section id="five-day" class="row text-center">
+                    <h2><u>5 Day Forecast:</u></h2>
+                </section>
+            </div>
         </div>
 
     </main>
