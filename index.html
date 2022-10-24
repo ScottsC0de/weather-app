@@ -17,7 +17,7 @@
 
 <body>
 
-    <header><u>WEATHER REPORT</u></header>
+    <header class="jumbotron-fluid"><u>WEATHER REPORT</u></header>
 
     <main>
 
@@ -25,7 +25,7 @@
             <section id="enter-city" class="col">
                 <form action="">
                     <label for="">Enter City Here!</label><br>
-                    <input id="user-input" type="text" placeholder="City Name"><br>
+                    <input id="user-input" type="text" placeholder="City, State"><br>
                     <button id="search-button">Search</button><br>
                     <div id="recent-searches">
                         <h2>Recent Searches:</h2>
@@ -34,8 +34,7 @@
             </section>
 
             <div class="col">
-                <section id="current-city" class="text-center">
-                    <h2><u>Today:</u></h2>
+                <section id="current-city" class="text-center bg-light w-50">
                     <h3 id="current-city-name"></h3>
                     <p id="todays-date"></p>
                     <p id="weather-icon"></p>
@@ -43,8 +42,7 @@
                     <p id="humidity"></p>
                     <p id="wind-speed"></p>
                 </section>
-                <section id="five-day" class="row text-center">
-                    <h2><u>5 Day Forecast:</u></h2>
+                <section id="five-day" class="row align-items-center forecast">
                 </section>
             </div>
         </div>

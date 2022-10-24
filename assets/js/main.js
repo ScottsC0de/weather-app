@@ -84,38 +84,34 @@ function getForecast(lat, lon) {
             for (i = 0; i < 6; i++) {
 
                 var dayContainers = document.createElement('div');
-                dayContainers.classList.add("col");
+                dayContainers.classList.add("col", "bg-light", "mr-3", "text-center");
 
                 // weather data was every 3 hours, need to convert to 5 day
                 indexConvert = i * 8 + 4;
 
                 var fiveDayDate = document.createElement("p")
                 fiveDayDate.textContent = moment(response.list[indexConvert].dt_txt).format('dddd MMM Do, YYYY');
-                fiveDayDate.classList.add("row");
                 dayContainers.appendChild(fiveDayDate);
 
                 var fiveDayIcon = document.createElement("img");
                 fiveDayIcon.setAttribute("src", "https://openweathermap.org/img/w/" + response.list[indexConvert].weather[0].icon + ".png");
-                fiveDayIcon.classList.add("row");
                 dayContainers.appendChild(fiveDayIcon);
 
                 var fiveDayTemp = document.createElement('p');
                 fiveDayTempConvert = Math.floor((response.list[indexConvert].main.temp - 273.15) * 9 / 5 + 32)
-                fiveDayTemp.classList.add("row");
                 fiveDayTemp.textContent = "Temp: " + fiveDayTempConvert + " °F";
                 dayContainers.appendChild(fiveDayTemp);
 
                 var fiveDayHumid = document.createElement('p');
                 fiveDayHumid.textContent = "Humidity: " + response.list[indexConvert].main.humidity + "%";
-                fiveDayHumid.classList.add("row");
                 dayContainers.appendChild(fiveDayHumid);
 
                 var fiveDayWind = document.createElement('p');
                 fiveDayWind.textContent = "Wind Speed: " + response.list[indexConvert].wind.speed + "mph";
-                fiveDayWind.classList.add("row");
                 dayContainers.appendChild(fiveDayWind);
 
                 fiveDay.appendChild(dayContainers);
+                // clearOldData();
             }
 
 
@@ -144,6 +140,6 @@ function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
 
-// function clearOldData()
+// function clearOldData(newData, oldData) { fiveDay.replaceChildren() }
 
 // need function when you click recent city, runs search button function
