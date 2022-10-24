@@ -1,6 +1,3 @@
-// API request by city name
-// api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
-
 // Module API link
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
@@ -44,7 +41,6 @@ function getForecast(lat, lon) {
         // displaying data for city, date, icon, temp in F, wind speed, humidity
         .then(function (response) {
             console.log(response);
-            // grabbing all necessary data
 
             var cityName = response.city.name; // and state?
             var cityState = response.city.country; // change to state somehow
@@ -70,14 +66,13 @@ function getForecast(lat, lon) {
             var cityHumidity = response.list[0].main.humidity;
             currentHumidityDisplay.textContent = "Humidity: " + cityHumidity + "%";
 
-            // old data gets replaced with new data every search
-            fiveDay.textContent = "";
+            fiveDay.textContent = ""; // so old data gets replaced with new data every search
 
             // for loop to get 5 day
             for (i = 0; i < 6; i++) {
 
                 var dayContainers = document.createElement('div');
-                dayContainers.classList.add("col", "bg-light", "mr-3", "text-center");
+                dayContainers.classList.add("col", "bg-light", "mr-4", "text-center");
 
                 // weather data was every 3 hours, needed to convert to 5 day
                 indexConvert = i * 8 + 4;
@@ -131,4 +126,11 @@ function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
 
- // clearRecents(); button
+// clearRecents(); button
+
+// on page load, in for loop, append buttons for length of LS array and set each button's value
+var displaySearches = JSON.parse(localStorage.getItem(searchHistory))
+
+for (var i = 0; i < searchHistory.length; i++) {
+
+}
