@@ -15,6 +15,7 @@ var cityTempDisplay = document.getElementById('temp');
 var windSpeedDisplay = document.getElementById('wind-speed');
 var currentHumidityDisplay = document.getElementById('humidity');
 var recentSearches = document.getElementById('recent-searches');
+var clearBtn = document.getElementById('clear-button');
 
 // 2 api calls to grab data
 function getLatLon(city) {
@@ -43,8 +44,8 @@ function getForecast(lat, lon) {
             console.log(response);
 
             var cityName = response.city.name; // and state?
-            var cityState = response.city.country; // change to state somehow
-            currentCityName.textContent = cityName + ", " + cityState;
+            // var cityState = response.city.country; // change to state somehow
+            currentCityName.textContent = cityName;
 
             var currentDate = moment().format('dddd MMM Do, YYYY');
             todaysDateDisplay.textContent = currentDate;
@@ -111,7 +112,6 @@ searchBtn.addEventListener('click', function (e) {
     searchHistory.push(userCity);
     localStorage.setItem(searchHistory, JSON.stringify(searchHistory));
     for (var i = 0; i < searchHistory.length; i++) {
-        JSON.parse(localStorage.getItem(searchHistory))
         var recentCity = document.createElement('button');
         var spaceBetween = document.createElement('br');
         recentCity.textContent = searchHistory[i];
@@ -122,13 +122,29 @@ searchBtn.addEventListener('click', function (e) {
             getLatLon(userCity);
         })
     }
-    displayRecents();
 });
 
 function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
 
-// clearRecents(); button
+window.addEventListener("load", function () {
+    var searchRecent = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    for (var i = 0; i < localStorage.length; i++) {
+        var recentCity = document.createElement('button');
+        var spaceBetween = document.createElement('br');
+        recentCity.textContent = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        recentSearches.appendChild(recentCity);
+        recentSearches.appendChild(spaceBetween);
+        recentCity.addEventListener("click", function (e) {
+            e.preventDefault();
+            getLatLon(searchRecent);
+        })
+    }
+})
+
+function clearRecents() {
+    localStorage.clear();
+}
 
 
