@@ -107,20 +107,18 @@ searchBtn.addEventListener('click', function (e) {
     e.preventDefault();
     var userCity = userInput.value;
     getLatLon(userCity);
-    saveSearch(userCity);
     var searchHistory = [];
     searchHistory.push(userCity);
     localStorage.setItem(searchHistory, JSON.stringify(searchHistory));
+    for (var i = 0; i < searchHistory.length; i++) {
+        JSON.parse(localStorage.getItem(searchHistory))
+        var recentCity = document.createElement('button');
+        var spaceBetween = document.createElement('br');
+        recentCity.textContent = searchHistory.value;
+        recentSearches.appendChild(recentCity);
+        recentSearches.appendChild(spaceBetween);
+    }
 });
-
-function saveSearch(city) {
-    var recentCity = document.createElement('button');
-    var spaceBetween = document.createElement('br');
-    recentCity.textContent = city;
-    recentSearches.appendChild(recentCity);
-    recentSearches.appendChild(spaceBetween);
-    // displayRecents(recentCity);
-};
 
 function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
@@ -128,9 +126,4 @@ function clearOldIcon(newIcon, oldIcon) {
 
 // clearRecents(); button
 
-// on page load, in for loop, append buttons for length of LS array and set each button's value
-var displaySearches = JSON.parse(localStorage.getItem(searchHistory))
 
-for (var i = 0; i < searchHistory.length; i++) {
-
-}
