@@ -76,7 +76,7 @@ function getForecast(lat, lon) {
                 dayContainers.classList.add("col", "bg-light", "mr-4", "text-center");
 
                 // weather data was every 3 hours, needed to convert to 5 day
-                indexConvert = i * 8 + 4;
+                indexConvert = i * 8 + 6; // mid-day (12 o'clock) weather conditions
 
                 var fiveDayDate = document.createElement("p")
                 fiveDayDate.textContent = moment(response.list[indexConvert].dt_txt).format('dddd MMM Do, YYYY');
@@ -129,19 +129,19 @@ function clearOldIcon(newIcon, oldIcon) {
 };
 
 window.addEventListener("load", function () {
-    var searchRecent = JSON.parse(localStorage.getItem(localStorage.key(i)));
     for (var i = 0; i < localStorage.length; i++) {
         var recentCity = document.createElement('button');
         var spaceBetween = document.createElement('br');
         recentCity.textContent = JSON.parse(localStorage.getItem(localStorage.key(i)));
         recentSearches.appendChild(recentCity);
         recentSearches.appendChild(spaceBetween);
+        var searchRecent = JSON.parse(localStorage.getItem(localStorage.key(i)));
         recentCity.addEventListener("click", function (e) {
             e.preventDefault();
             getLatLon(searchRecent);
         })
     }
-})
+});
 
 function clearRecents() {
     localStorage.clear();
