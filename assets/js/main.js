@@ -104,6 +104,7 @@ function getForecast(lat, lon) {
         });
 }
 
+// main weather search function
 searchBtn.addEventListener('click', function (e) {
     e.preventDefault();
     var userCity = userInput.value;
@@ -124,10 +125,12 @@ searchBtn.addEventListener('click', function (e) {
     }
 });
 
+// replaces each weather icon for current day
 function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
 
+// recent search function
 window.addEventListener("load", function () {
     for (var i = 0; i < localStorage.length; i++) {
         var recentCity = document.createElement('button');
@@ -143,6 +146,7 @@ window.addEventListener("load", function () {
     }
 });
 
+// clear recent searches
 function clearRecents() {
     localStorage.clear();
 }
