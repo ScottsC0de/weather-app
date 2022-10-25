@@ -114,10 +114,15 @@ searchBtn.addEventListener('click', function (e) {
         JSON.parse(localStorage.getItem(searchHistory))
         var recentCity = document.createElement('button');
         var spaceBetween = document.createElement('br');
-        recentCity.textContent = searchHistory.value;
+        recentCity.textContent = searchHistory[i];
         recentSearches.appendChild(recentCity);
         recentSearches.appendChild(spaceBetween);
+        recentCity.addEventListener("click", function (e) {
+            e.preventDefault();
+            getLatLon(userCity);
+        })
     }
+    displayRecents();
 });
 
 function clearOldIcon(newIcon, oldIcon) {
