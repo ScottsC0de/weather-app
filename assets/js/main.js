@@ -123,28 +123,13 @@ searchBtn.addEventListener('click', function (e) {
             getLatLon(userCity);
         })
     }
+    recentSearches.style.display = "block";
 });
 
 // replaces each weather icon for current day
 function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
-
-// recent search function
-window.addEventListener("load", function () {
-    for (var i = 0; i < localStorage.length; i++) {
-        var recentCity = document.createElement('button');
-        var spaceBetween = document.createElement('br');
-        recentCity.textContent = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        recentSearches.appendChild(recentCity);
-        recentSearches.appendChild(spaceBetween);
-        var searchRecent = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        recentCity.addEventListener("click", function (e) {
-            e.preventDefault();
-            getLatLon(searchRecent);
-        })
-    }
-});
 
 // clear recent searches
 function clearRecents() {
