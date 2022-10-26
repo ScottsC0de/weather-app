@@ -15,7 +15,6 @@ var cityTempDisplay = document.getElementById('temp');
 var windSpeedDisplay = document.getElementById('wind-speed');
 var currentHumidityDisplay = document.getElementById('humidity');
 var recentSearches = document.getElementById('recent-searches');
-var clearBtn = document.getElementById('clear-button');
 
 // 2 api calls to grab data
 function getLatLon(city) {
@@ -131,9 +130,5 @@ function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
 
-// clear recent searches
-function clearRecents() {
-    localStorage.clear();
-}
 
 
