@@ -1,4 +1,3 @@
-/* colors when text is highlighted with cursor */
 ::selection {
     background-color: black;
     color: white;

@@ -42,8 +42,7 @@ function getForecast(lat, lon) {
         .then(function (response) {
             console.log(response);
 
-            var cityName = response.city.name; // and state?
-            // var cityState = response.city.country; // change to state somehow
+            var cityName = response.city.name;
             currentCityName.textContent = cityName;
 
             var currentDate = moment().format('dddd MMM Do, YYYY');
