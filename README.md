@@ -20,3 +20,5 @@ GitHub Repo: https://github.com/ScottsC0de/weather-app
 ## Video
 
 ## Screenshot
+
+![alt text](assets/img/weather-site-img.png)
