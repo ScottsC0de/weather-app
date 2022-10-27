@@ -14,6 +14,8 @@ body {
     background-image: url(https://images.pexels.com/photos/258149/pexels-photo-258149.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200);
     background-position: center;
     background-size: cover;
+    height: 100%;
+    background-position: center;
 }
 
 header {
@@ -71,7 +73,7 @@ button:hover {
 #current-city {
     margin-bottom: 40px;
     opacity: 80%;
-    margin-left: 190px;
+    margin-left: 120px;
 }
 
 #five-day {
