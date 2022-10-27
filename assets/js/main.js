@@ -15,6 +15,7 @@ var cityTempDisplay = document.getElementById('temp');
 var windSpeedDisplay = document.getElementById('wind-speed');
 var currentHumidityDisplay = document.getElementById('humidity');
 var recentSearches = document.getElementById('recent-searches');
+var clearBtn = document.getElementById('clear-button');
 
 // 2 api calls to grab data
 function getLatLon(city) {
@@ -30,7 +31,7 @@ function getLatLon(city) {
             var cityLon = response[0].lon;
             getForecast(cityLat, cityLon);
         })
-}
+};
 
 function getForecast(lat, lon) {
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=43eade946f6708f970e3b3d38a9999a2"
@@ -99,8 +100,8 @@ function getForecast(lat, lon) {
 
                 fiveDay.appendChild(dayContainers);
             }
-        });
-}
+        })
+};
 
 // main weather search function
 searchBtn.addEventListener('click', function (e) {
@@ -128,6 +129,13 @@ searchBtn.addEventListener('click', function (e) {
 function clearOldIcon(newIcon, oldIcon) {
     weatherIconDisplay.replaceChildren(newIcon, oldIcon);
 };
+
+// clears local storage/recent searches
+clearBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    localStorage.clear();
+    recentSearches.style.display = "none";
+});
 
 
 
