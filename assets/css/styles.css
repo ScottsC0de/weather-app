@@ -71,10 +71,15 @@ button:hover {
 #current-city {
     margin-bottom: 40px;
     opacity: 80%;
+    margin-left: 190px;
 }
 
 #five-day {
     width: 100%;
     text-align: center;
     opacity: 80%;
+}
+
+#weather-content {
+    margin-top: 100px;
 }
