@@ -132,9 +132,9 @@ function clearOldIcon(newIcon, oldIcon) {
 
 // clears local storage/recent searches
 clearBtn.addEventListener("click", function (e) {
-    e.preventDefault();
+   // e.preventDefault();
     localStorage.clear();
-    recentSearches.style.display = "none";
+   // recentSearches.style.display = "none";
 });
 
 
