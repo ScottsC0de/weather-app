@@ -77,6 +77,10 @@ function getForecast(lat, lon) {
                 // weather data was every 3 hours, needed to convert to 5 day
                 indexConvert = i * 8 + 6; // mid-day (12 o'clock) weather conditions
 
+                if (indexConvert > response.list.length) {
+
+                }
+
                 var fiveDayDate = document.createElement("p")
                 fiveDayDate.textContent = moment(response.list[indexConvert].dt_txt).format('dddd MMM Do, YYYY');
                 dayContainers.appendChild(fiveDayDate);
@@ -99,6 +103,7 @@ function getForecast(lat, lon) {
                 dayContainers.appendChild(fiveDayWind);
 
                 fiveDay.appendChild(dayContainers);
+
             }
         })
 };
@@ -122,7 +127,23 @@ searchBtn.addEventListener('click', function (e) {
             getLatLon(userCity);
         })
     }
-    recentSearches.style.display = "block";
+});
+
+window.addEventListener("load", function () {
+    for (var i = 0; i < localStorage.length; i++) {
+        var recentCity = document.createElement('button');
+        var spaceBetween = document.createElement('br');
+        recentCity.textContent = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        var searchRecent = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        recentCity.setAttribute("data-city", searchRecent[0]);
+        recentSearches.appendChild(recentCity);
+        recentSearches.appendChild(spaceBetween);
+        recentCity.addEventListener("click", function (e) {
+            e.preventDefault();
+            var newCity = e.target.dataset.city
+            getLatLon(newCity);
+        })
+    }
 });
 
 // replaces each weather icon for current day
@@ -132,9 +153,7 @@ function clearOldIcon(newIcon, oldIcon) {
 
 // clears local storage/recent searches
 clearBtn.addEventListener("click", function (e) {
-    // e.preventDefault();
     localStorage.clear();
-    // recentSearches.style.display = "none";
 });
 
 
