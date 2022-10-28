@@ -19,7 +19,7 @@ var clearBtn = document.getElementById('clear-button');
 
 // 2 api calls to grab data
 function getLatLon(city) {
-    var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + ", us&appid=43eade946f6708f970e3b3d38a9999a2"
+    var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + ", us&appid=43eade946f6708f970e3b3d38a9999a2"
     fetch(queryURL)
         .then(function (response) {
             return response.json();
@@ -132,9 +132,9 @@ function clearOldIcon(newIcon, oldIcon) {
 
 // clears local storage/recent searches
 clearBtn.addEventListener("click", function (e) {
-   // e.preventDefault();
+    // e.preventDefault();
     localStorage.clear();
-   // recentSearches.style.display = "none";
+    // recentSearches.style.display = "none";
 });
 
 
